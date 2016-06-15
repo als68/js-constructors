@@ -11,6 +11,21 @@
  * @method   printDetails
  */
 
+function Spell(name, cost, description){
+  this.name = name;
+  this.cost = cost;
+  this.description = description;
+
+  this.getDetails = getDetails;
+  function getDetails () {
+    var detailsString = this.name + " " + this.cost + " " + this.description;
+    return detailsString;
+  }
+}
+
+  // body...
+
+
   /**
    * Returns a string of all of the spell's details.
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
@@ -43,6 +58,14 @@
  * @property {number} damage
  * @property {string} description
  */
+
+function DamageSpell(name, cost, damage, description){
+  Spell.call(this, name, cost, description);
+
+}
+
+DamageSpell.prototype = Object.create(Spell.prototype);
+
 
 /**
  * Now that you've created some spells, let's create
